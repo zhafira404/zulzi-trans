@@ -15,11 +15,10 @@ use App\Http\Controllers\Admin\ArmadaController; // <-- TAMBAHKAN INI
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-// ... (rute /user yang mungkin sudah ada)
+// Ganti 'welcome' jadi 'app'
+Route::get('/{any?}', function () {
+    return view('app'); // <-- Pastikan ini 'app', BUKAN 'welcome'
+})->where('any', '.*');
 
 Route::prefix('admin')->middleware('auth:sanctum')->group(function () { 
     // Rute dashboard dari sebelumnya
